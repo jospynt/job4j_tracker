@@ -4,6 +4,11 @@ public class Book {
     private String name;
     private int pages;
 
+    public Book(String name, int pages) {
+        setName(name);
+        setPages(pages);
+    }
+
     public String getName() {
         return name;
     }
