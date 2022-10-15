@@ -5,8 +5,8 @@ public class Book {
     private int pages;
 
     public Book(String name, int pages) {
-        setName(name);
-        setPages(pages);
+        this.name = name;
+        this.pages = pages;
     }
 
     public String getName() {
