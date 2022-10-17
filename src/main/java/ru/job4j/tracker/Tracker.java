@@ -25,18 +25,18 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+        return null;
     }
 
     public Item[] findByName(String key) {
         Item[] rsl = new Item[size];
-        int count = 0;
+        int rslSize = 0;
         for (int i = 0; i < size; i++) {
             if (key.equals(items[i].getName())) {
-                rsl[count++] = items[i];
+                rsl[rslSize++] = items[i];
             }
         }
-        return Arrays.copyOf(rsl, count);
+        return Arrays.copyOf(rsl, rslSize);
     }
 
     public Item findById(int id) {
