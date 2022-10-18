@@ -46,6 +46,6 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId())).isEqualTo(null);
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 }
