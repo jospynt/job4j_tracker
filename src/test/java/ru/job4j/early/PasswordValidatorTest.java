@@ -19,51 +19,69 @@ class PasswordValidatorTest {
 
     @Test
     void whenWrongLength() {
-        String result = PasswordValidator.validate("psw");
-        String expected = "Password length should be within 8 and 32.";
-        assertEquals(result, expected);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("psw");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Password length should be within 8 and 32.");
     }
 
     @Test
     void whenIncludesSubstring() {
-        String result = PasswordValidator.validate("T1$userT");
-        String expected = "Password should not include substrings \"qwerty\", "
-                + "\"12345\", \"password\", \"admin\", \"user\"";
-        assertEquals(result, expected);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("T1$userT");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Password should not include substrings \"qwerty\", "
+                + "\"12345\", \"password\", \"admin\", \"user\"");
     }
 
     @Test
     void whenNoUpper() {
-        String result = PasswordValidator.validate("t1$ttttt");
-        String expected = "Password should include at least one upper case letter.";
-        assertEquals(result, expected);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("t1$ttttt");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Password should include at least one upper case letter.");
     }
 
     @Test
     void whenNoLower() {
-        String result = PasswordValidator.validate("T1$TTTTT");
-        String expected = "Password should include at least one lower case letter.";
-        assertEquals(result, expected);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("T1$TTTTT");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Password should include at least one lower case letter.");
     }
 
     @Test
     void whenNoDigit() {
-        String result = PasswordValidator.validate("Tt$ttttt");
-        String expected = "Password should include at least one digit.";
-        assertEquals(result, expected);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("Tt$ttttt");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Password should include at least one digit.");
     }
 
     @Test
     void whenNoSpecial() {
-        String result = PasswordValidator.validate("T1tttttt");
-        String expected = "Password should include at least one special symbol.";
-        assertEquals(result, expected);
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    PasswordValidator.validate("T1tttttt");
+                });
+        assertThat(exception.getMessage()).isEqualTo("Password should include at least one special symbol.");
     }
 
     @Test
     void whenCorrect() {
         String result = PasswordValidator.validate("T1$ttttt");
-        String expected = "Password is correct.";
+        String expected = "T1$ttttt";
         assertEquals(result, expected);
     }
 }

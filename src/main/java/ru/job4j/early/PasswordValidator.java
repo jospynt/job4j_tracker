@@ -6,13 +6,13 @@ public class PasswordValidator {
                         throw new IllegalArgumentException("Password should not be null.");
                 }
                 if (password.length() < 8 || password.length() > 32) {
-                        return "Password length should be within 8 and 32.";
+                        throw new IllegalArgumentException("Password length should be within 8 and 32.");
                 }
                 String[] checkWords = {"qwerty", "12345", "password", "admin", "user"};
                 for (String word : checkWords) {
                         if (password.toLowerCase().contains(word)) {
-                                return "Password should not include substrings \"qwerty\", "
-                                        + "\"12345\", \"password\", \"admin\", \"user\"";
+                                throw new IllegalArgumentException("Password should not include substrings \"qwerty\", "
+                                        + "\"12345\", \"password\", \"admin\", \"user\"");
                         }
                 }
                 char[] chars = password.toCharArray();
@@ -21,31 +21,34 @@ public class PasswordValidator {
                 boolean lowerFlag = false;
                 boolean specialFlag = false;
                 for (char c : chars) {
-                        if (!upperFlag && Character.isUpperCase(c)) {
+                        if (Character.isUpperCase(c)) {
                                 upperFlag = true;
                         }
-                        if (!lowerFlag && Character.isLowerCase(c)) {
+                        if (Character.isLowerCase(c)) {
                                 lowerFlag = true;
                         }
-                        if (!digitFlag && Character.isDigit(c)) {
+                        if (Character.isDigit(c)) {
                                 digitFlag = true;
                         }
-                        if (!specialFlag && !Character.isDigit(c) && !Character.isLetter(c)) {
+                        if (!Character.isDigit(c) && !Character.isLetter(c)) {
                                 specialFlag = true;
+                        }
+                        if (upperFlag && lowerFlag && digitFlag && specialFlag) {
+                                break;
                         }
                 }
                 if (!upperFlag) {
-                        return "Password should include at least one upper case letter.";
+                        throw new IllegalArgumentException("Password should include at least one upper case letter.");
                 }
                 if (!lowerFlag) {
-                        return "Password should include at least one lower case letter.";
+                        throw new IllegalArgumentException("Password should include at least one lower case letter.");
                 }
                 if (!digitFlag) {
-                        return "Password should include at least one digit.";
+                        throw new IllegalArgumentException("Password should include at least one digit.");
                 }
                 if (!specialFlag) {
-                        return "Password should include at least one special symbol.";
+                        throw new IllegalArgumentException("Password should include at least one special symbol.");
                 }
-                return "Password is correct.";
+                return password;
         }
 }
