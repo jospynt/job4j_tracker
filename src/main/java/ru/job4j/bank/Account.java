@@ -3,7 +3,13 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 public class Account {
+    /**
+     * Реквизиты счета хранятся в переменной типа String
+     */
     private String requisite;
+    /**
+     * Баланс счета хранится в переменной типа double
+     */
     private double balance;
 
     public Account(String requisite, double balance) {

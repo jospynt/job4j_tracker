@@ -3,7 +3,13 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 public class User {
+    /**
+     * Номер паспорта клиента хранится в переменной типа String
+     */
     private String passport;
+    /**
+     * Имя клиента хранится в переменной типа String
+     */
     private String username;
 
     public User(String passport, String username) {
