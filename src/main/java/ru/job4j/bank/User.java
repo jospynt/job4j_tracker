@@ -2,6 +2,11 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс охранит данные о клиенте: номер паспорта, ФИО.
+ * @author PAVEL YATSULA
+ * @version 1.0
+ */
 public class User {
     /**
      * Номер паспорта клиента хранится в переменной типа String

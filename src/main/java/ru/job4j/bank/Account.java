@@ -2,6 +2,11 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс хранит данные о счете: реквизиты, баланс.
+ * @author PAVEL  YATSULA
+ * @version 1.0
+ */
 public class Account {
     /**
      * Реквизиты счета хранятся в переменной типа String

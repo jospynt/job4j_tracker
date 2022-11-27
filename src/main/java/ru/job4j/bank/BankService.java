@@ -7,8 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
+/**
+ * Класс обеспечивает работу с данными банка о клиентах и их счетах.
+ * @author PAVEL YATSULA
+ * @version 1.0
+ */
 public class BankService {
     /**
      * Хранение клиентов осуществляется в коллекции типа HashMap,
